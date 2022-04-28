@@ -1,0 +1,58 @@
+#INFORMATIQUE POUR SCIENCES SOCIALES (INF105- 2022J)
+
+#MEMBRES DU GROUPE:
+ # NAISSA INGRID JACQUET
+ # MAGDALINA JEAN
+
+setwd("~/Rstudio_TD/INF_105")
+
+ library(tidyverse)
+ library(ggplot2) 
+ library(openxlsx)
+df <- read.xlsx("WB_HT_DATA.xlsx")
+
+
+# lA SERIE CHRONOLOGIQUE EN ANNEE
+annee<-df[2,7:67]
+annee<-as.numeric(annee)
+annee
+
+# LES CREDITS DOMESTIQUES EN POURCENTAGE DU PIB
+dom<-df[134,7:67]
+dom<-as.numeric(dom)
+dom
+
+# Base de donnees
+df1<- data.frame(annee, dom)
+df1
+
+# GROSS SAVINGS EN POURCENTAGE DU PIB
+sav<-df[50,7:67]
+sav<-as.numeric(sav)
+sav
+
+
+#BASE DE DONNEES
+df2<-data.frame(annee, dom, sav)
+df2
+
+#  INFLATION
+inf<-df[494,7:67]
+inf<-as.numeric(inf)
+inf
+
+
+# NOUVELLE BASE DE DONNEES
+
+df3<-data.frame(annee, dom, sav, inf)
+df3
+  
+
+# GRAPHIQUE (FIGURE 2.4)
+
+plot(annee, sav, xlab="annee", ylab="inf", type="l", col="green")
+abline(v=2008, col="red")
+abline(v=2019, col="red")
+abline(v=2020, col="red")
+
+
